@@ -7,11 +7,13 @@ import purejavacomm.SerialPortEventListener
 import java.io.InputStream
 
 fun main(args: Array<String>) {
-    if (args.isEmpty()) {
+    val portName = if (args.isNotEmpty()) {
+        // Get the port name from the command-line arguments
+        args[0]
+    } else {
         println("Please provide the port name as an argument.")
-        return
+        "/dev/ttyUSB0"
     }
-    val portName = args[0] // Get the port name from the command-line arguments
     val portId = CommPortIdentifier.getPortIdentifier(portName)
     val port = portId.open("EnoceanReader", 2000) as SerialPort
 
