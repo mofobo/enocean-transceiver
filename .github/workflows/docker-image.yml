@@ -37,3 +37,4 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/enocean-transceiver:latest
+          platforms: linux/amd64,linux/arm64,linux/arm64/v8
